@@ -62,7 +62,7 @@ class BubbleService : FloatingBubbleService() {
         val closeIcon = Helpers.getDrawableId(
             applicationContext,
             bubbleOptions.closeIcon,
-            R.drawable.ic_close_bubble
+            com.torrydo.floatingbubbleview.R.drawable.ic_close_bubble
         )
 
         return FloatingBubble.Builder(this)
