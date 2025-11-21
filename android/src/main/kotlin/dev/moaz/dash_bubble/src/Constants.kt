@@ -4,8 +4,10 @@ package dev.moaz.dash_bubble.src
 class Constants {
     companion object {
         const val METHOD_CHANNEL = "dash_bubble"
-        const val OVERLAY_PERMISSION_REQUEST_CODE = 7000
-        const val POST_NOTIFICATIONS_PERMISSION_REQUEST_CODE = 8000
+
+        //Change to avoid duplicating request code with other plugins
+        const val OVERLAY_PERMISSION_REQUEST_CODE = 70000
+        const val POST_NOTIFICATIONS_PERMISSION_REQUEST_CODE = 80000
         const val BUBBLE_OPTIONS_INTENT_EXTRA = "bubbleOptionsIntentExtra"
         const val NOTIFICATION_OPTIONS_INTENT_EXTRA = "notificationOptionsIntentExtra"
         const val ERROR_TAG = "DASH_BUBBLE"

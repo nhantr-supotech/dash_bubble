@@ -28,7 +28,7 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     private var activityBinding: ActivityPluginBinding? = null
     private lateinit var mActivity: Activity
     private lateinit var channel: MethodChannel
-    private lateinit var delayedResultHandler: Result
+    private var delayedResultHandler: Result? = null
     private lateinit var broadcastListener: BroadcastListener
     private lateinit var bubbleManager: BubbleManager
 
@@ -146,7 +146,9 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     /** This method is called whenever an action that has an activity result is completed */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
         if (requestCode == Constants.OVERLAY_PERMISSION_REQUEST_CODE) {
-            delayedResultHandler.success(bubbleManager.hasOverlayPermission())
+            delayedResultHandler?.success(bubbleManager.hasOverlayPermission())
+
+            delayedResultHandler = null
             return true
         }
 
@@ -160,7 +162,9 @@ class DashBubblePlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
         grantResults: IntArray
     ): Boolean {
         if (requestCode == Constants.POST_NOTIFICATIONS_PERMISSION_REQUEST_CODE) {
-            delayedResultHandler.success(bubbleManager.hasPostNotificationsPermission())
+            delayedResultHandler?.success(bubbleManager.hasPostNotificationsPermission())
+
+            delayedResultHandler = null
             return true
         }
 
